@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bab Kita — Kenangan Kita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Decorations -->
+  <div class="bg-decor" aria-hidden="true">
+    <div class="floating-hearts"></div>
+    <div class="floating-sparkles"></div>
+  </div>
+  <div id="loader" class="loader">
+    <div class="loader-book">
+      <div class="loader-page"></div>
+      <div class="loader-page"></div>
+    </div>
+    <p class="loader-text">MEMBUKA BUKUU KENANGAN....</p>
+  </div>
+
+  <!-- Reading Progress -->
+  <div id="reading-progress" class="reading-progress hidden">
+    <div id="reading-bar" class="reading-bar"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="book-nav" class="book-nav hidden">
+    <button id="nav-toc" class="nav-btn" aria-label="Daftar isi">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+    </button>
+    <span id="nav-chapter" class="nav-chapter"></span>
+    <button id="nav-top" class="nav-btn" aria-label="Kembali ke atas">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </button>
+  </nav>
+
+  <!-- Table of Contents Overlay -->
+  <div id="toc-overlay" class="toc-overlay hidden">
+    <div class="toc-panel">
+      <div class="toc-header">
+        <h2>Daftar Isi</h2>
+        <button id="toc-close" class="toc-close" aria-label="Tutup">&times;</button>
+      </div>
+      <ul id="toc-list" class="toc-list"></ul>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox hidden">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Tutup">&times;</button>
+    <button id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="Sebelumnya">&#8249;</button>
+    <img id="lightbox-img" src="" alt="Kenangan">
+    <button id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="Selanjutnya">&#8250;</button>
+    <p id="lightbox-caption" class="lightbox-caption"></p>
+  </div>
+
+  <main id="book">
+
+    <!-- Music Player -->
+    <div id="music-player" class="music-player hidden">
+      <button id="music-toggle" class="music-btn" aria-label="Putar atau jeda musik">
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="icon-pause hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+      <div class="music-info">
+        <span class="music-title">Tentang Bab Kita :)</span>
+        <span class="music-hint">play lagu disini</span>
+        <div class="music-progress-wrap" id="music-progress-wrap" aria-label="Geser untuk maju mundur lagu" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+          <div id="music-progress" class="music-progress"></div>
+        </div>
+      </div>
+      <button id="music-mute" class="music-mute" aria-label="Bisukan musik">
+        <svg class="icon-volume" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        <svg class="icon-muted hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+      </button>
+    </div>
+
+    <!-- PROLOG -->
+    <section id="prolog" class="page text-page" data-chapter="Prolog">
+      <div class="page-corner page-corner-tr"></div>
+      <div class="page-corner page-corner-bl"></div>
+      <div class="page-inner">
+        <span class="chapter-number">Prolog</span>
+        <h2 class="chapter-title">Sebelum Bab Pertama</h2>
+        <div class="title-ornament"><span>❦</span></div>
+        <div class="chapter-body">
+          <p class="drop-cap">Ada cerita yang tidak perlu panjang lebar untuk terasa indah. Cukup dengan senyummu, tatapanmu, dan setiap detik yang kita habiskan bersama — cerita itu sudah cukup untuk mengisi seluruh halaman hidupku.</p>
+          <p>Buku ini bukan novel sungguhan. Tidak ada plot twist, tidak ada antagonis. Hanya kita — foto-foto, tawa-tawa kecil, dan lagu yang selalu mengingatkanku padamu.</p>
+          <p>Setiap bab di sini adalah potongan kenangan yang kusimpan rapi, seperti bookmark di antara halaman-halaman hari-hari kita. Silakan dibaca pelan-pelan, seperti membaca surat cinta yang ditulis dengan tangan.</p>
+        </div>
+        <div class="page-footer">
+          <span class="page-num">i</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TANGGAL PENTING -->
+    <section id="timeline" class="page text-page" data-chapter="Tanggal Penting">
+      <div class="page-corner page-corner-tr"></div>
+      <div class="page-corner page-corner-bl"></div>
+      <div class="page-inner">
+        <span class="chapter-number">Interlude</span>
+        <h2 class="chapter-title">Tanggal-Tanggal Penting</h2>
+        <div class="title-ornament"><span>♥</span></div>
+        <div class="chapter-body">
+          <p>Setiap cerita punya titik-titik waktu yang tak terlupakan. Inilah beberapa tanggal yang selalu kuingat — dari awal mula hingga hari ini.</p>
+        </div>
+        <div id="timeline-cards" class="timeline"></div>
+        <div class="page-footer">
+          <span class="page-num">ii</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapters rendered by JS -->
+    <div id="chapters-container"></div>
+
+    <!-- VIDEO SECTION -->
+    <section id="video-section" class="page text-page hidden" data-chapter="Film Kenangan">
+      <div class="page-inner">
+        <span class="chapter-number">Film</span>
+        <h2 class="chapter-title">Gerak &amp; Suara</h2>
+        <div class="chapter-body">
+          <p>Beberapa kenangan hidup — bergerak, bersuara, dan tidak bisa dibekukan dalam satu frame. Inilah momen-momen yang lebih dari sekadar foto.</p>
+        </div>
+        <div id="video-gallery" class="video-gallery"></div>
+        <div class="page-footer">
+          <span class="page-num"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EPILOG -->
+    <section id="epilog" class="page text-page" data-chapter="Epilog">
+      <div class="page-corner page-corner-tr"></div>
+      <div class="page-corner page-corner-bl"></div>
+      <div class="page-inner epilog-inner">
+        <span class="chapter-number">Epilog</span>
+        <h2 class="chapter-title">Bab Selanjutnya</h2>
+        <div class="title-ornament"><span>❦</span></div>
+        <div class="chapter-body">
+          <p>Ini bukan akhir cerita — ini hanya halaman sementara sebelum bab-bab baru kita tulis bersama. Masih banyak foto yang belum difoto, masih banyak vidio random kamu yang belum dibuat, masih banyak tawa dan senyuman belum tercatat, masih banyak lagu yang belum kita dengarkan berdua.</p>
+          <p>Terima kasih sudah menjadi bagian dari ceritaku. Terima kasih sudah sabar, sudah sayang, sudah rindu, sudah ada di dalam kehidupanku.</p>
+          <p>Terima kasih atas segala yang telah kamu berikan.</p>
+          <blockquote class="epilog-quote">
+            "Setiap hari bersamamu<br>adalah bab favoritku."
+          </blockquote>
+        </div>
+        <p class="epilog-sign">Dengan cinta,<br><span class="signature">"Muhammad Farid"</span></p>
+        <div class="page-footer">
+          <span class="page-num">— love you moree —</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="book-close-area">
+    <button id="close-book-btn" class="close-book-btn" type="button">TUTUP BUKU</button>
+  </div>
+
+  <div id="book-close-overlay" class="book-close-overlay" aria-hidden="true">
+    <div class="book-close-visual">
+      <div class="book-close-cover book-close-left"></div>
+      <div class="book-close-cover book-close-right"></div>
+      <div class="book-close-spine"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-ornament">✦ ♥ ✦</div>
+    <p>Bab Kita · Kenangan Kita</p>
+    <p class="footer-date">Dibuat pada 21 Juli 2026</p>
+  </footer>
+
+  <audio id="bg-music" src="song/Merry Christmast I Miss You.mp3" preload="auto" loop></audio>
+
+  <script src="memory.js"></script>
+</body>
+</html>
